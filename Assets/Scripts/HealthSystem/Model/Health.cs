@@ -32,6 +32,8 @@ namespace HealthSystem.Model
 
         public Health(int maxHealth)
         {
+            if (maxHealth <= 0) throw new ArgumentException("MaxHealth must be positive");
+            
             _maxHealth = maxHealth;
             _currentHealth = _maxHealth;
         }
@@ -40,7 +42,7 @@ namespace HealthSystem.Model
         {
             if (damage <= 0 || _currentHealth <= 0) return;
             
-            _currentHealth -= damage;
+            CurrentHealth -= damage;
             
             OnDamaged?.Invoke();
         }
