@@ -27,31 +27,29 @@ namespace Tests.EditMode
             health.TakeDamage(101);
             Assert.AreEqual(0, health.CurrentHealth);
         }
+
         [Test]
         public void TakeDamage_TriggerOnDamage()
         {
             var health = new Health(100);
             var isTriggered = false;
-            
+
             health.OnDamaged += () => { isTriggered = true; };
             health.TakeDamage(10);
-            
+
             Assert.IsTrue(isTriggered);
         }
-        
+
         [Test]
         public void TakeDamage_TriggerOnDeath()
         {
             var health = new Health(100);
             var isTriggered = false;
-            
-            health.TakeDamage(100);
-            
-            
+
             health.OnDeath += () => { isTriggered = true; };
-            
+            health.TakeDamage(100);
+
             Assert.IsTrue(isTriggered);
         }
-        
     }
 }
