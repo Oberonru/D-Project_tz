@@ -14,9 +14,9 @@ namespace Player.Spawner
         {
             var player = Container.InstantiatePrefabForComponent<PlayerInstance>(_prefab);
             if (_isSingle)
-                Container.Bind<PlayerInstance>().FromInstance(player).AsSingle();
+                Container.Bind<IPlayerInstance>().FromInstance(player).AsSingle();
             else
-                Container.Bind<PlayerInstance>().FromInstance(player);
+                Container.Bind<IPlayerInstance>().FromInstance(player);
         }
     }
 }

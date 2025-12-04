@@ -6,7 +6,7 @@ namespace DevTools
 {
     public class CheckPlayerStats : MonoBehaviour
     {
-        [Inject] private PlayerInstance _player;
+        [Inject] private IPlayerInstance _player;
         
         private void Update()
         {
