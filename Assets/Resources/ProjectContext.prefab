@@ -46,6 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Infrastructure.Providers.ConfigProvider
   _elements:
   - {fileID: 11400000, guid: 928306952861aa346be98d91025d80c7, type: 2}
+  - {fileID: 11400000, guid: 74ef807782e6adc4aa324b39ef37d6b9, type: 2}
 --- !u!1 &6219169508883176752
 GameObject:
   m_ObjectHideFlags: 0

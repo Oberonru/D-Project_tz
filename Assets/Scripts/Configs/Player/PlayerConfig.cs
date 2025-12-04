@@ -7,9 +7,9 @@ namespace Configs.Player
     public class PlayerConfig : ScriptableConfig
     {
         [SerializeField] private int _maxHealth;
-        [SerializeField] private int _level;
+        [SerializeField] private int _lives = 1;
         
         public int MaxHealth => _maxHealth;
-        public int Level => _level;
+        public int Lives => _lives;
     }
 }
