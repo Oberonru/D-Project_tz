@@ -12,17 +12,9 @@ namespace Player.Components
             if (_weapon == null) _weapon = GetComponent<WeaponComponent>();
         }
 
-        private void Update()
+        public void Attack()
         {
-            if (Input.GetKeyDown(KeyCode.Mouse0))
-            {
-                Attack();
-            }
-        }
-
-        private void Attack()
-        {
-            if (_weapon.IsRanged)
+            if (_weapon.CurrentWeapon.IsRanged)
             {
                 _weapon.RangedAttack();
                 Debug.Log("Ranged attack");

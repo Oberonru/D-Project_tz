@@ -22,7 +22,7 @@ namespace Player
         public WeaponComponent Weapon => _weapon;
 
         public PlayerCombatComponent PlayerCombatComponent => playerCombatComponent;
-        public PlayerInventory Inventory => _inventory;
+        public PlayerInventory PlayerInventory => _inventory;
         public Equipment Equipment => _equipment;
 
         private void OnValidate()
@@ -33,14 +33,5 @@ namespace Player
             if (_inventory == null) _inventory = GetComponent<PlayerInventory>();
             if (_equipment == null) _equipment = GetComponent<Equipment>();
         }
-
-        // private void Update()
-        // {
-        //     foreach (var item in Inventory.Inventory)
-        //     {
-        //         Debug.Log(item.Name);
-        //         Debug.Log(item.Description);
-        //     }
-        // }
     }
 }

@@ -10,6 +10,6 @@ namespace Player
         HealthComponent PlayerHealth { get; }
         WeaponComponent Weapon { get; }
         PlayerCombatComponent PlayerCombatComponent { get; }
-        PlayerInventory Inventory { get; }
+        PlayerInventory PlayerInventory { get; }
     }
 }

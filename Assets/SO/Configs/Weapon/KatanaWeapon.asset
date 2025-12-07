@@ -9,10 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 38d167219769423cbe2b74213d743197, type: 3}
-  m_Name: UntilItemConfig
-  m_EditorClassIdentifier: Core::Configs.ItemData.UntilItemConfig
-  _name: 
-  _description: 
-  _cost: 0
-  _itemType: 0
+  m_Script: {fileID: 11500000, guid: 2d95da66c0244bbc81feffeb038cd51d, type: 3}
+  m_Name: KatanaWeapon
+  m_EditorClassIdentifier: Core::Configs.Weapons.WeaponConfig
+  _ammo: 4
+  _isRanged: 1
+  _name: Katana
+  _description: Simple melee weapon
+  _cost: 13

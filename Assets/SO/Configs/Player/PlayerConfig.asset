@@ -17,3 +17,5 @@ MonoBehaviour:
   _startItems:
   - {fileID: 11400000, guid: 74ef807782e6adc4aa324b39ef37d6b9, type: 2}
   - {fileID: 11400000, guid: 8849b62b9c8d8cf44b6bbfb1abf550f6, type: 2}
+  - {fileID: 11400000, guid: 7ce51d4cb9d90dc43b20022f4634f0f1, type: 2}
+  - {fileID: 11400000, guid: 5e319bbf6e3237046b440f2d81e0abb3, type: 2}

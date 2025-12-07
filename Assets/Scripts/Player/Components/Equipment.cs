@@ -20,8 +20,11 @@ namespace Player.Components
         {
             switch (item)
             {
-                case Weapon weapon:
+                case Weapon weapon when _secondaryWeaponSlot == null:
                     _primaryWeapon = weapon;
+                    break;
+                case Weapon weapon:
+                    _secondaryWeaponSlot = weapon;
                     break;
                 case UntilItem until:
                     _until = until;

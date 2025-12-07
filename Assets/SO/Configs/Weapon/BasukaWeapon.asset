@@ -17,4 +17,4 @@ MonoBehaviour:
   _cost: 1000
   _itemType: 0
   _ammo: 1
-  _isRanged: 0
+  _isRanged: 1

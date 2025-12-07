@@ -9,6 +9,8 @@ namespace WeaponSystem
         public event Action OnAttacked;
         public bool IsRanged => _weaponModel.IsRanged;
         public int Ammo => _weaponModel.Ammo;
+
+        public Weapon CurrentWeapon => _weaponModel;
         private Weapon _weaponModel;
 
         private void OnDestroy()

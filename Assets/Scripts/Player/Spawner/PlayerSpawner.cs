@@ -23,12 +23,12 @@ namespace Player.Spawner
             foreach (var i in _config.StartItems)
             {
                 var item = i.CreateItem();
-                player.Inventory.Add(item);
+                player.PlayerInventory.Add(item);
 
                 if (item is Weapon weapon)
                 {
-                    player.Equipment.Equip(weapon);
                     player.Weapon.Init(weapon);
+                    player.Equipment.Equip(weapon);
                 }
             }
 
