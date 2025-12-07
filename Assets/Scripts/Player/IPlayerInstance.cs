@@ -8,7 +8,8 @@ namespace Player
     public interface IPlayerInstance : IFactoryObject
     {
         HealthComponent PlayerHealth { get; }
-       // WeaponComponent Weapon { get; }
-        //PlayerCombatComponent PlayerCombatComponent { get; }
+        WeaponComponent Weapon { get; }
+        PlayerCombatComponent PlayerCombatComponent { get; }
+        PlayerInventory Inventory { get; }
     }
 }

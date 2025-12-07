@@ -14,3 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Configs.Player.PlayerConfig
   _maxHealth: 10
   _lives: 1
+  _startItems:
+  - {fileID: 11400000, guid: 74ef807782e6adc4aa324b39ef37d6b9, type: 2}
+  - {fileID: 11400000, guid: 8849b62b9c8d8cf44b6bbfb1abf550f6, type: 2}

@@ -6,28 +6,41 @@ using WeaponSystem;
 namespace Player
 {
     [RequireComponent(typeof(HealthComponent))]
-    //[RequireComponent(typeof(WeaponComponent))]
-    //[RequireComponent(typeof(PlayerCombatComponent))]
+    [RequireComponent(typeof(WeaponComponent))]
+    [RequireComponent(typeof(PlayerCombatComponent))]
+    [RequireComponent(typeof(PlayerInventory))]
+    [RequireComponent(typeof(Equipment))]
     public class PlayerInstance : MonoBehaviour, IPlayerInstance
     {
         [SerializeField] private HealthComponent _healthComponent;
-        //[SerializeField] private WeaponComponent _weapon;
-        //[SerializeField] private PlayerCombatComponent playerCombatComponent;
+        [SerializeField] private WeaponComponent _weapon;
+        [SerializeField] private PlayerCombatComponent playerCombatComponent;
+        [SerializeField] private PlayerInventory _inventory;
+        [SerializeField] private Equipment _equipment;
 
         public HealthComponent PlayerHealth => _healthComponent;
-        //public WeaponComponent Weapon => _weapon;
-        //public PlayerCombatComponent PlayerCombatComponent => playerCombatComponent;
+        public WeaponComponent Weapon => _weapon;
+
+        public PlayerCombatComponent PlayerCombatComponent => playerCombatComponent;
+        public PlayerInventory Inventory => _inventory;
+        public Equipment Equipment => _equipment;
 
         private void OnValidate()
         {
             if (_healthComponent == null) _healthComponent = GetComponent<HealthComponent>();
-            //if (_weapon == null) _weapon = GetComponent<WeaponComponent>();
-            //if (playerCombatComponent == null) playerCombatComponent = GetComponent<PlayerCombatComponent>();
+            if (_weapon == null) _weapon = GetComponent<WeaponComponent>();
+            if (playerCombatComponent == null) playerCombatComponent = GetComponent<PlayerCombatComponent>();
+            if (_inventory == null) _inventory = GetComponent<PlayerInventory>();
+            if (_equipment == null) _equipment = GetComponent<Equipment>();
         }
 
-        private void Update()
-        {
-            //Debug.Log(PlayerHealth.CurrentHealth);
-        }
+        // private void Update()
+        // {
+        //     foreach (var item in Inventory.Inventory)
+        //     {
+        //         Debug.Log(item.Name);
+        //         Debug.Log(item.Description);
+        //     }
+        // }
     }
 }

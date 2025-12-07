@@ -1,7 +1,6 @@
 ﻿using System;
 using UnityEngine;
 using WeaponSystem.Model;
-using Zenject;
 
 namespace WeaponSystem
 {
@@ -12,20 +11,17 @@ namespace WeaponSystem
         public int Ammo => _weaponModel.Ammo;
         private Weapon _weaponModel;
 
-        // [Inject]
-        // public void Construct(Weapon weapon)
-        // {
-        //     _weaponModel = weapon;
-        //
-        //     _weaponModel.OnAttacked += HandleAttack;
-        // }
-
         private void OnDestroy()
         {
             if (_weaponModel != null)
             {
                 _weaponModel.OnAttacked -= OnAttacked;
             }
+        }
+
+        public void Init(Weapon weapon)
+        {
+            _weaponModel = weapon;
         }
 
         public void RangedAttack()

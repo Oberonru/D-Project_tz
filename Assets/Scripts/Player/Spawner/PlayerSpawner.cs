@@ -1,8 +1,8 @@
 ﻿using Configs.Player;
-using HealthSystem;
 using HealthSystem.Model;
 using Player.Factory;
 using UnityEngine;
+using WeaponSystem.Model;
 using Zenject;
 
 namespace Player.Spawner
@@ -16,13 +16,23 @@ namespace Player.Spawner
         public override void InstallBindings()
         {
             var player = _factory.Create(_prefab, Vector3.zero, Quaternion.identity, null) as PlayerInstance;
-            var health = player.GetComponent<HealthComponent>();
             var healthModel = new Health(_config.MaxHealth);
-            
-            health.Init(healthModel);
-            
 
-            Container.Bind<IPlayerInstance>().FromInstance(_prefab).AsSingle();
+            player.PlayerHealth.Init(healthModel);
+
+            foreach (var i in _config.StartItems)
+            {
+                var item = i.CreateItem();
+                player.Inventory.Add(item);
+
+                if (item is Weapon weapon)
+                {
+                    player.Equipment.Equip(weapon);
+                    player.Weapon.Init(weapon);
+                }
+            }
+
+            Container.Bind<IPlayerInstance>().FromInstance(player).AsSingle();
         }
     }
 }

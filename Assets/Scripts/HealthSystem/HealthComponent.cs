@@ -32,15 +32,6 @@ namespace HealthSystem
             _healthModel = health;
             Subscribe();
         }
-        // [Inject]
-        // public void Construct(IHealth health)
-        // {
-        //    if (_healthModel != null) Unsubscribe();
-        //
-        //     _healthModel = health;
-        //
-        //     Subscribe();
-        // }
 
         public void TakeDamage(int damage)
         {
