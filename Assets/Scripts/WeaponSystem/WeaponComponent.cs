@@ -12,13 +12,13 @@ namespace WeaponSystem
         public int Ammo => _weaponModel.Ammo;
         private Weapon _weaponModel;
 
-        [Inject]
-        public void Construct(Weapon weapon)
-        {
-            _weaponModel = weapon;
-
-            _weaponModel.OnAttacked += HandleAttack;
-        }
+        // [Inject]
+        // public void Construct(Weapon weapon)
+        // {
+        //     _weaponModel = weapon;
+        //
+        //     _weaponModel.OnAttacked += HandleAttack;
+        // }
 
         private void OnDestroy()
         {

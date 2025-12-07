@@ -1,13 +1,14 @@
 ﻿using HealthSystem;
+using Infrastructure.Factory;
 using Player.Components;
 using WeaponSystem;
 
 namespace Player
 {
-    public interface IPlayerInstance
+    public interface IPlayerInstance : IFactoryObject
     {
         HealthComponent PlayerHealth { get; }
-        WeaponComponent Weapon { get; }
-        PlayerCombatComponent PlayerCombatComponent { get; }
+       // WeaponComponent Weapon { get; }
+        //PlayerCombatComponent PlayerCombatComponent { get; }
     }
 }

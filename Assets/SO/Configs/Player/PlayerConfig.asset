@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: PlayerConfig
   m_EditorClassIdentifier: Assembly-CSharp::Configs.Player.PlayerConfig
   _maxHealth: 10
-  _level: 1
+  _lives: 1

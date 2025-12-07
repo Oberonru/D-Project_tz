@@ -1,4 +1,7 @@
 ﻿using Configs.Player;
+using HealthSystem;
+using HealthSystem.Model;
+using Player.Factory;
 using UnityEngine;
 using Zenject;
 
@@ -6,17 +9,20 @@ namespace Player.Spawner
 {
     public class PlayerSpawner : MonoInstaller
     {
+        [Inject] private IPlayerFactory _factory;
         [Inject] private PlayerConfig _config;
         [SerializeField] private PlayerInstance _prefab;
-        [SerializeField] private bool _isSingle;
 
         public override void InstallBindings()
         {
-            var player = Container.InstantiatePrefabForComponent<PlayerInstance>(_prefab);
-            if (_isSingle)
-                Container.Bind<IPlayerInstance>().FromInstance(player).AsSingle();
-            else
-                Container.Bind<IPlayerInstance>().FromInstance(player);
+            var player = _factory.Create(_prefab, Vector3.zero, Quaternion.identity, null) as PlayerInstance;
+            var health = player.GetComponent<HealthComponent>();
+            var healthModel = new Health(_config.MaxHealth);
+            
+            health.Init(healthModel);
+            
+
+            Container.Bind<IPlayerInstance>().FromInstance(_prefab).AsSingle();
         }
     }
 }

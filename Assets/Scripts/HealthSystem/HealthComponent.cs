@@ -1,7 +1,6 @@
 ﻿using System;
 using HealthSystem.Model;
 using UnityEngine;
-using Zenject;
 
 namespace HealthSystem
 {
@@ -25,15 +24,23 @@ namespace HealthSystem
             if (_healthModel != null) Unsubscribe();
         }
 
-        [Inject]
-        public void Construct(IHealth health)
+
+        public void Init(IHealth health)
         {
-           if (_healthModel != null) Unsubscribe();
-
+            if (_healthModel != null) Unsubscribe();
+            
             _healthModel = health;
-
             Subscribe();
         }
+        // [Inject]
+        // public void Construct(IHealth health)
+        // {
+        //    if (_healthModel != null) Unsubscribe();
+        //
+        //     _healthModel = health;
+        //
+        //     Subscribe();
+        // }
 
         public void TakeDamage(int damage)
         {
