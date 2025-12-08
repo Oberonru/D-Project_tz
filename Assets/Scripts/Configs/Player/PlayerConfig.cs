@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using Configs.ItemData;
+using Configs.ItemEntities;
 using Infrastructure.SO;
 using UnityEngine;
 

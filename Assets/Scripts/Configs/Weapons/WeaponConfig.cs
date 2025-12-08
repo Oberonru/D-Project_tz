@@ -1,4 +1,4 @@
-﻿using Configs.ItemData;
+﻿using Configs.ItemEntities;
 using Items;
 using UnityEngine;
 using WeaponSystem.Model;

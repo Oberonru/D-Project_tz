@@ -2,7 +2,7 @@
 using Items;
 using UnityEngine;
 
-namespace Configs.ItemData
+namespace Configs.ItemEntities
 {
     public abstract class ItemConfig : ScriptableConfig
     {
