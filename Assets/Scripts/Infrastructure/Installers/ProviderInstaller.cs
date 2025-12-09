@@ -13,7 +13,12 @@ namespace Infrastructure.Installers
             {
                 var element = _elements[i];
                 Container.Bind(element.GetType()).FromInstance(element).AsSingle();
-            }
+
+                if (element is IInitializable initializable)
+                {
+                    initializable.Initialize();
+                }
+             }
         }
     }
 }

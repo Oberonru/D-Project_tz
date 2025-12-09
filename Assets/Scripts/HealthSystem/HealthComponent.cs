@@ -7,8 +7,19 @@ namespace HealthSystem
     public class HealthComponent : MonoBehaviour
     {
         private IHealth _healthModel;
-        public int MaxHealth => _healthModel.MaxHealth;
-        public int CurrentHealth => _healthModel.CurrentHealth;
+
+        public int MaxHealth
+        {
+            get => _healthModel.MaxHealth;
+            set => _healthModel.MaxHealth = value;
+        }
+
+        public int CurrentHealth
+        {
+            get => _healthModel.CurrentHealth; 
+            set => _healthModel.CurrentHealth = value;
+        }
+
         public event Action<int, int> OnHealthChanged;
         public event Action OnDamaged;
         public event Action OnDeath;
@@ -28,7 +39,7 @@ namespace HealthSystem
         public void Init(IHealth health)
         {
             if (_healthModel != null) Unsubscribe();
-            
+
             _healthModel = health;
             Subscribe();
         }

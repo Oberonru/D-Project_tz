@@ -10,7 +10,11 @@ namespace HealthSystem.Model
         public event Action OnDamaged;
         public event Action OnDeath;
 
-        public int MaxHealth => _maxHealth;
+        public int MaxHealth
+        {
+            get => _maxHealth;
+            set => _maxHealth = value;
+        }
 
         public int CurrentHealth
         {
@@ -33,7 +37,7 @@ namespace HealthSystem.Model
         public Health(int maxHealth)
         {
             if (maxHealth <= 0) throw new ArgumentException("MaxHealth must be positive");
-            
+
             _maxHealth = maxHealth;
             _currentHealth = _maxHealth;
         }
@@ -41,9 +45,9 @@ namespace HealthSystem.Model
         public void TakeDamage(int damage)
         {
             if (damage <= 0 || _currentHealth <= 0) return;
-            
+
             CurrentHealth -= damage;
-            
+
             OnDamaged?.Invoke();
         }
 
@@ -51,7 +55,6 @@ namespace HealthSystem.Model
         {
             if (heal <= 0 || _currentHealth >= _maxHealth) return;
             CurrentHealth += heal;
-            
         }
     }
 }

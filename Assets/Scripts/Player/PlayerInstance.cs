@@ -10,6 +10,7 @@ namespace Player
     [RequireComponent(typeof(PlayerCombatComponent))]
     [RequireComponent(typeof(PlayerInventory))]
     [RequireComponent(typeof(Equipment))]
+    [RequireComponent(typeof(PlayerDataComponent))]
     public class PlayerInstance : MonoBehaviour, IPlayerInstance
     {
         [SerializeField] private HealthComponent _healthComponent;
@@ -17,6 +18,7 @@ namespace Player
         [SerializeField] private PlayerCombatComponent playerCombatComponent;
         [SerializeField] private PlayerInventory _inventory;
         [SerializeField] private Equipment _equipment;
+        [SerializeField] private PlayerDataComponent _playerData;
 
         public HealthComponent PlayerHealth => _healthComponent;
         public WeaponComponent Weapon => _weapon;
@@ -24,6 +26,7 @@ namespace Player
         public PlayerCombatComponent PlayerCombatComponent => playerCombatComponent;
         public PlayerInventory PlayerInventory => _inventory;
         public Equipment Equipment => _equipment;
+        public PlayerDataComponent PlayerData => _playerData;
 
         private void OnValidate()
         {
@@ -32,6 +35,7 @@ namespace Player
             if (playerCombatComponent == null) playerCombatComponent = GetComponent<PlayerCombatComponent>();
             if (_inventory == null) _inventory = GetComponent<PlayerInventory>();
             if (_equipment == null) _equipment = GetComponent<Equipment>();
+            if (_playerData == null) _playerData = GetComponent<PlayerDataComponent>();
         }
     }
 }

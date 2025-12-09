@@ -11,5 +11,6 @@ namespace Player
         WeaponComponent Weapon { get; }
         PlayerCombatComponent PlayerCombatComponent { get; }
         PlayerInventory PlayerInventory { get; }
+        PlayerDataComponent PlayerData { get; }
     }
 }
