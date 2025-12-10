@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Items;
 using UnityEngine;
 
@@ -6,12 +7,15 @@ namespace Player.Components
 {
     public class PlayerInventory : MonoBehaviour
     {
-        public List<Item> Inventory =>  _items; 
+        public List<Item> Inventory => _items;
         [SerializeField] private List<Item> _items = new();
+        
+        public event Action<Item> OnItemAdded;
 
         public void Add(Item item)
         {
             _items.Add(item);
+            OnItemAdded?.Invoke(item);
         }
 
         public void Remove(Item item)

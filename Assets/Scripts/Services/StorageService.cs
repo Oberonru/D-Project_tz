@@ -87,6 +87,26 @@ namespace Services
                 return PlayerData;
             }
         }
+        
+        public void Clear()
+        {
+            try
+            {
+                if (File.Exists(_filePath))
+                {
+                    File.Delete(_filePath);
+                    Debug.Log("Хранилище очищено: файл сохранения удалён.");
+                }
+                else
+                {
+                    Debug.Log("Хранилище уже пустое.");
+                }
+            }
+            catch (Exception e)
+            {
+                Debug.LogError($"Ошибка очистки: {e}");
+            }
+        }
 
         private bool IsReady()
         {

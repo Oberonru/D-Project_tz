@@ -1,9 +1,12 @@
 ﻿using System;
 using Configs.Player;
 using HealthSystem.Model;
+using Items;
+using Items.Instances;
 using Services;
 using Storage;
 using UnityEngine;
+using WeaponSystem.Model;
 using Zenject;
 
 namespace Player.Components
@@ -13,6 +16,7 @@ namespace Player.Components
     {
         [Inject] private PlayerConfig _config;
         [Inject] private StorageService _storage;
+        [Inject] private DiContainer _di;
         [SerializeField] private PlayerInstance _player;
 
         public PlayerData Data => _data;
@@ -25,7 +29,8 @@ namespace Player.Components
 
         private void OnEnable()
         {
-            _player.PlayerHealth.OnHealthChanged += HandleHealthChanged;
+            if (_player?.PlayerHealth != null)
+                _player.PlayerHealth.OnHealthChanged += HandleHealthChanged;
         }
 
         private void OnValidate()
@@ -68,11 +73,45 @@ namespace Player.Components
 
         private void LoadingData()
         {
-            _player.PlayerHealth.MaxHealth = _player.PlayerData.Data.HealthData.MaxHealth;
-            _player.PlayerHealth.CurrentHealth = _player.PlayerData.Data.HealthData.CurrentHealth;
-            
-            //Загрузка экипировки
+            var health = new Health(_data.HealthData.MaxHealth)
+            {
+                CurrentHealth = Mathf.Clamp(_data.HealthData.CurrentHealth, 0, _data.HealthData.MaxHealth)
+            };
+
+            _player.PlayerHealth.Init(health);
+
+            HandleHealthChanged(health.CurrentHealth, health.MaxHealth);
             //Загрузка инвентаря
+
+            foreach (var itemData in _player.PlayerData.Data.InventoryData.ItemsData)
+            {
+                Item item = null;
+
+                switch (itemData.ItemTypeData)
+                {
+                    case ItemTypeData.Weapon:
+                        item = _di.Instantiate<Weapon>(new[] { itemData });
+                        break;
+                    case ItemTypeData.Until:
+                        item = _di.Instantiate<UntilItem>(new[] { itemData });
+                        break;
+                    case ItemTypeData.RocketPack:
+                        item = _di.Instantiate<RocketPack>(new[] { itemData });
+                        break;
+                }
+
+                if (item != null)
+                {
+                    _player.PlayerInventory.Add(item);
+                }
+            }
+
+            //Экипировка игрока
+            if (_data.EquipmentData.PrimaryWeaponSlot != null)
+            {
+                var weapon = _di.Instantiate<Weapon>(new object[] { _data.EquipmentData.PrimaryWeaponSlot });
+                _player.Equipment.Equip(weapon);
+            }
         }
 
         private void InitStartingData()

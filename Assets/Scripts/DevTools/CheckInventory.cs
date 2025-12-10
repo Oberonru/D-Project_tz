@@ -28,7 +28,7 @@ namespace DevTools
                     Debug.Log(item.Name);
                 }
 
-                Debug.Log("Current equipped weapon: " + _player.Weapon.CurrentWeapon.Name);
+                Debug.Log("Current equipped weapon: " + _player.Weapon?.CurrentWeapon?.Name);
             }
         }
     }
